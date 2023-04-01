@@ -68,8 +68,8 @@ public class HttpTaskServer {
                         String pathId = path.replaceFirst("/tasks/task/", "");
                         int id = parsePathId(pathId);
                         if (id != -1) {
-                            //  String response = gson.toJson(taskManager.getTaskById(id));
-                            sendText(httpExchange, String.valueOf(id));
+                              String response = gson.toJson(taskManager.getTaskById(id));
+                            sendText(httpExchange, response);
                             break;
                         } else {
                             System.out.println("получен некорректный id " + pathId);
@@ -347,7 +347,6 @@ public class HttpTaskServer {
             httpExchange.close();
         }
     }
-
 
     private int parsePathId(String path) {
         try {

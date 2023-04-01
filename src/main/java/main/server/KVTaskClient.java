@@ -13,19 +13,19 @@ public class KVTaskClient {
 
     public KVTaskClient(String apiUrl) throws IOException {
         this.apiUrl = apiUrl;
-        this.apiToken = register();
+      this.apiToken = register();
     }
 
     private String register() throws IOException {
         URL url = new URL(apiUrl + "/register");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setDoOutput(true);
+        connection.setRequestMethod("GET");
+     //   connection.setDoOutput(true);
 
-        String postData = "";
+     //   String postData = "";
 
-        byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
-        connection.getOutputStream().write(postDataBytes);
+     //   byte[] postDataBytes = postData.getBytes(StandardCharsets.UTF_8);
+      //  connection.getOutputStream().write(postDataBytes);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
         String token = reader.readLine();
@@ -36,6 +36,7 @@ public class KVTaskClient {
 
     public void put(String key, String json) throws IOException {
         URL url = new URL(apiUrl + "/save/" + key + "?API_TOKEN=" + apiToken);
+       // URL url = new URL(apiUrl + "/save/" + key + "?API_TOKEN=");
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setDoOutput(true);
@@ -45,9 +46,11 @@ public class KVTaskClient {
 
         connection.getResponseCode();
     }
-
+//localhost:8078/save/1?API_TOKEN=1680362422576
+// http://localhost:8078/load/1?API_TOKEN=1680362422576
     public String load(String key) throws IOException {
         URL url = new URL(apiUrl + "/load/" + key + "?API_TOKEN=" + apiToken);
+      //  URL url = new URL(apiUrl + "/load/" + key + "?API_TOKEN=" );
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
 

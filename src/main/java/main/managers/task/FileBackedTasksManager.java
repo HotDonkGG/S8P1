@@ -103,7 +103,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
     @Override
     public List<Task> getAllTask() {
         List<Task> newGetAllTask = super.getAllTask();
-       // save();
+       save();
         return newGetAllTask;
     }
 

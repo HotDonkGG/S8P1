@@ -50,6 +50,14 @@ public class Task {
 
     }
 
+    public Task(Integer id, String name, String description, TaskStatus status, TaskType taskType) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.taskType = taskType;
+    }
+
     public Integer getId() {
         return id;
     }
